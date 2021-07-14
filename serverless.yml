@@ -1,0 +1,21 @@
+service:
+  name: paycast
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: eu-west-1
+  stage: ${opt:stage, 'dev'}
+  deploymentBucket:
+    name: ${self:provider.stage}-optimus-deployment
+
+resources:
+  Resources:
+    HostingBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:provider.stage}-optimus-paycast
+        AccessControl: PublicRead
+        WebsiteConfiguration:
+          IndexDocument: index.html
+          ErrorDocument: index.html

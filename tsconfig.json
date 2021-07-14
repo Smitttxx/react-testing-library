@@ -1,0 +1,3 @@
+{
+  "extends": "@shieldpay/wheeljack/config/typescript/tsconfig.json"
+}
